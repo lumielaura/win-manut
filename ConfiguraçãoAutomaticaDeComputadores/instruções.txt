@@ -1,0 +1,34 @@
+Siga os passos a seguir:
+
+Powershell
+========
+Set-ExecutionPolicy Unrestricted CurrentUser;
+& "$HOME\Desktop\ConfiguraçãoAutomaticaDeComputadores\scp\servicos.ps1";
+========
+
+
+1. Abra a 'microsoft store' e instale o app:
+	Instalador de aplicativos
+	Powershell
+	Terminal do Windows (opcional)
+2. Copie a pasta 'ConfiguraçãoAutomaticaDeComputadores' para a área de trabalho (Desktop)
+3. Abra o Powershell como Administrador
+4. Cole e Execute o código abaixo
+
+
+
+Powershell
+========
+& "$HOME\Desktop\ConfiguraçãoAutomaticaDeComputadores\Menu.ps1";
+========
+
+Obs: 
+1. Esse processo só precisa ser feito uma única vez
+2. O antivirus vai bloquear a execução do script
+    - Desative temporariamente o antivirus
+    - O Windows Defender não obstrui a execução do script.
+
+
+========
+Versão 2.3
+Última Atualização - 31 de janeiro de 2024
