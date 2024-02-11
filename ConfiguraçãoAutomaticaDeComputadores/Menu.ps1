@@ -1,6 +1,3 @@
-# Script criado por Anderson Machado.
-# Email: anderson.machado@sims.ap.gov.br
-
 # Objetivo: Este Script foi criado para auxiliar no LENTO processo de manutenção de computadores da empresa onde trabalho, agilizar os procedimentos, assim, diminuindo a carga de trabalho de todos os funcionários do setor de técnologia.
 
 # Desbloqueando script

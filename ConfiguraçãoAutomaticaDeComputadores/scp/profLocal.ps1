@@ -5,7 +5,7 @@ Show-SubMenu ($subTitle = "$mcl1");
 # $passwd = ConvertTo-SecureString –AsPlainText -Force -String $lpass
 
 # Coletando Passwd Automáticamente
-$passwd = ConvertTo-SecureString –AsPlainText -Force -String chmod@rwx
+$passwd = ConvertTo-SecureString –AsPlainText -Force -String Senha123exemplo
 
 Enable-LocalUser -name 'administrador'
 Set-LocalUser -Name 'administrador' -Password $passwd
