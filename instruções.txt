@@ -3,7 +3,7 @@ Siga os passos a seguir:
 Powershell
 ========
 Set-ExecutionPolicy Unrestricted CurrentUser;
-& "$HOME\Desktop\ConfiguraçãoAutomaticaDeComputadores\scp\servicos.ps1";
+& "$HOME\Desktop\win-manut\scp\servicos.ps1";
 ========
 
 
@@ -11,7 +11,7 @@ Set-ExecutionPolicy Unrestricted CurrentUser;
 	Instalador de aplicativos
 	Powershell
 	Terminal do Windows (opcional)
-2. Copie a pasta 'ConfiguraçãoAutomaticaDeComputadores' para a área de trabalho (Desktop)
+2. Copie a pasta 'win-manut' para a área de trabalho (Desktop)
 3. Abra o Powershell como Administrador
 4. Cole e Execute o código abaixo
 
@@ -19,7 +19,7 @@ Set-ExecutionPolicy Unrestricted CurrentUser;
 
 Powershell
 ========
-& "$HOME\Desktop\ConfiguraçãoAutomaticaDeComputadores\Menu.ps1";
+& "$HOME\Desktop\win-manut\Menu.ps1";
 ========
 
 Obs: 
