@@ -117,5 +117,5 @@ if ([int]$partC -gt [int]$gpartC) {
         Break;
 
     }
-         
+    
 }
