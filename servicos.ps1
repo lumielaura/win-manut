@@ -2,7 +2,7 @@ if ($Mkey -eq 'Pass')
 {    
     Show-SubMenu ($subTitle = "$mse1");
 }
-Unblock-File $PSScriptRoot\Menu.ps1;
+Unblock-File $PSScriptRoot\Menu.ps1 -ErrorAction SilentlyContinue;
 
 # Alterando os serviços windows de acordo com a política da empresa
 # Disabilitando servicos
@@ -36,4 +36,3 @@ ForEach-Object -Process {
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" ClearPageFileAtShutdown -Value 1 -ErrorAction SilentlyContinue;
 
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\SYSTEM\CurrentControlSet\Services\Schedule" Start -Value 4 -ErrorAction SilentlyContinue;
-

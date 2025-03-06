@@ -1,5 +1,8 @@
 Show-SubMenu ($subTitle = "$sta1");
 
+# mandar o valor para variável
+# $Today = (Get-Date).DayOfWeek
+
 # vendo todas as propriedades de um objeto
 # get-Service -Name Fax | select-Object -Property *;
 

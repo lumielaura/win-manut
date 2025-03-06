@@ -114,6 +114,7 @@ if ([int]$partC -gt [int]$gpartC) {
     } else {
 
         "`tVoce não conseguiu criar a Nova particao, mas o espaço total do seu disco C foi reduzido com sucesso.`n`n`tVerifique o Gerenciamento de Disco para mais informacoes.";
+        Start-Sleep -Seconds 10;
         Break;
 
     }
