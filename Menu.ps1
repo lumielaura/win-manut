@@ -94,15 +94,11 @@ function Show-SubMenu {
 
 }
 
-# Definindo Aplicação SendKeys (Contribuição Edson Leal)
-# $wshell = New-Object -ComObject wscript.shell;
-# $wshell.SendKeys("{ENTER}");
-
 do {
     Show-Menu
     $opcao = Read-Host "Por favor, digite uma opcao";
     switch ($opcao) {
-        '1' {
+        1 {
             # Todas as Opcoes Abaixo            
             Write-Progress -Activity "Progresso do Script: $mse1" -Status "Tarefa 1 de 10" -PercentComplete 10;
             & "$PSScriptRoot\servicos.ps1";
@@ -147,23 +143,23 @@ do {
             Restart-Computer -Confirm;
         } 
 
-        '2' {            
+        2 {            
             # Modificar e Iniciar os Serviços do Windows
             & "$PSScriptRoot\servicos.ps1";
         } 
 
-        '3' {            
+        3 {            
             # Atualizar o Windows
             & "$PSScriptRoot\scp\winUpdate.ps1";
             Restart-Computer -Confirm;
         } 
         
-        '4' {            
+        4 {            
             # Instalar Automaticamente os Programas da SEAS
             & "$PSScriptRoot\scp\programas.ps1";
         } 
         
-        '5' {            
+        5 {            
             Show-SubMenu ($subTitle = "$coleta");
 
             "`nDigite os NUMEROS do Hostname:`nEx: Digite: 17";
@@ -175,28 +171,28 @@ do {
             } 
         } 
         
-        '6' {            
+        6 {            
             # Ingressar o Computador no Dominio
             Show-SubMenu ($subTitle = "$ingre");
             & SystemPropertiesComputerName;
         } 
 
-        '7' {            
+        7 {            
             # Instalar Programas Restantes (manual)
             & "$PSScriptRoot\scp\progMan.ps1";
         } 
         
-        '8' {            
+        8 {            
             # Ativar a Conta de Administrador Local
             & "$PSScriptRoot\scp\profLocal.ps1";
         } 
         
-        '9' {            
+        9 {            
             # Mostrar o Status Atual do Computador
             & "$PSScriptRoot\scp\status.ps1";
         } 
         
-        '10' {            
+        10 {            
             # Modificar as Configuracoes de Rede (Wi-Fi - DHCP)
             Show-SubMenu ($subTitle = "$mip2");
 
@@ -205,17 +201,17 @@ do {
             Set-NetIPInterface -InterfaceAlias Wi-Fi -DHCP enabled;
         } 
         
-        '11' {            
+        11 {            
             # Particionar Disco e Mudar Perfil Padrao Users
             & "$PSScriptRoot\scp\partDisk.ps1";
         }  
         
-        '12' {            
+        12 {            
             # Adicionar conexão da rede SIMS/AP (Wi-Fi)
             & "$PSScriptRoot\netwk\netwk.ps1";
         }  
         
-        '13' {            
+        13 {            
             # Instalar RSAT
             Show-SubMenu ($subTitle = "$irsat");
 
@@ -224,7 +220,7 @@ do {
             Get-WindowsCapability -Name "Rsat.ActiveDirectory.*" -online | Add-WindowsCapability –Online;
         }  
         
-        '14' {            
+        14 {            
             # Nova senha ADM
             Show-SubMenu ($subTitle = "$cript");
 
@@ -232,7 +228,7 @@ do {
             Read-Host "Nova Senha: " -AsSecureString | ConvertFrom-SecureString | Out-File $caminho
         } 
         
-        '15' {            
+        15 {            
             # Testes
         } 
         

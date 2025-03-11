@@ -16,3 +16,8 @@ $locDRes = Read-Host "[S] Sim, [N] Nao";
 
 "`nVocê deseja particionar o HD?";
 $hdpart = Read-Host "[S] Sim, [N] Nao";
+
+
+# Definindo Aplicação SendKeys (Contribuição Edson Leal)
+# $wshell = New-Object -ComObject wscript.shell;
+# $wshell.SendKeys("{ENTER}");
