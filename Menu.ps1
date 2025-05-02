@@ -1,8 +1,15 @@
-# Objetivo: Este Script foi criado para auxiliar no LENTO processo de manutenção de computadores da empresa onde trabalho, agilizar os procedimentos, assim, diminuindo a carga de trabalho de todos os funcionários do setor de técnologia.
-
-# Atenção: é recomendado usar esse script apenas em computadores com o windows 10 recém instalado, não posso me responsabilizar por qualquer tipo de problema que venha a occorrer com o uso do mesmo.
-
-# Use ao seu critério: Script feito para usuários avançados e referencias futuras.
+<#
+.SYNOPSIS
+	Deixa o computador pronto para uso no padrão da empresa.
+.DESCRIPTION
+    Este script powershell foi criado para configurar e instalar todos os programas necessários para o uso diário do usuário comum, assim, deixando o computador pronto para uso de acordo com os padrões da empresa. Privilégios de administrador são necessários.
+.EXAMPLE
+	PS> ./Menu.ps1
+.LINK
+	https://github.com/
+.NOTES
+	Autor: Anderson Costa
+#>
 
 # Desbloqueando script
 $policy = Get-ExecutionPolicy CurrentUser;
@@ -20,7 +27,6 @@ if ($policy -eq "Unrestricted") {
         Unblock-File "$PSScriptRoot\$_.ps1" -ErrorAction SilentlyContinue;
     
     }
-
     Set-ExecutionPolicy RemoteSigned CurrentUser;
 }
 
@@ -34,7 +40,7 @@ $escolha = 'Voce Escolheu a Opcao';
 $cadeira = 'Todas as Opcoes Abaixo';
 $mip1 = 'Modificar as Configuracoes de Rede (Wi-Fi - IP Estatico)';
 $mip2 = 'Modificar as Configuracoes de Rede (Wi-Fi - DHCP)';
-$mpr1 = "Instalar Automaticamente os Programas";
+$mpr1 = 'Instalar Automaticamente os Programas';
 $mse1 = 'Modificar e Iniciar os Serviços do Windows';
 $mcl1 = 'Ativar a Conta de Administrador Local';
 $mpm1 = 'Instalar Programas Restantes (manual)';
@@ -42,7 +48,7 @@ $wup1 = 'Atualizar o Windows';
 $ingre = 'Ingressar o Computador no Dominio';
 $sta1 = 'Mostrar o Status Atual do Computador';
 $part = 'Particionar Disco e Mudar Perfil Padrao Users';
-$addNet = "Adicionar conexão da rede (Wi-Fi)";
+$addNet = 'Adicionar conexão da rede (Wi-Fi)';
 $irsat = 'Instalar RSAT';
 $cript = 'Criar nova senha para o ADM';
 
