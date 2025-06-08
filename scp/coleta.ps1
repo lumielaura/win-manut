@@ -1,21 +1,16 @@
 # Coleta de informações
 Show-SubMenu ($subTitle = "$coleta");
 
-"`nDigite as LETRAS do Hostname:`nEx: Digite: GTI";
-$hlet2 = Read-Host "LETRAS do Hostname";
+$hlet2 = Read-Host "`nDigite as LETRAS do Hostname:`nEx: Digite: GTI`nLETRAS do Hostname";
 $hlet = $hlet2.toUpper();
 
-"`nDigite os NUMEROS do Hostname:`nEx: Digite: 17";
-$hnum = Read-Host "NUMEROS do Hostname";
+$hnum = Read-Host "`nDigite os NUMEROS do Hostname:`nEx: Digite: 17`nNUMEROS do Hostname";
 
-"`nVoce Deseja alterar as configucoes de IP?";
-$resIp = Read-Host "[S] Sim, [N] Nao";
+$resIp = Read-Host "`nVoce Deseja alterar as configucoes de IP?`n[S] Sim, [N] Nao";
 
-"`nVocê deseja desabilitar a conta local do usuario padrao?";
-$locDRes = Read-Host "[S] Sim, [N] Nao";
+$locDRes = Read-Host "`nVocê deseja desabilitar a conta local do usuario padrao?`n[S] Sim, [N] Nao";
 
-"`nVocê deseja particionar o HD?";
-$hdpart = Read-Host "[S] Sim, [N] Nao";
+$hdpart = Read-Host "`nVocê deseja particionar o HD?`n[S] Sim, [N] Nao";
 
 
 # Definindo Aplicação SendKeys (Contribuição Edson Leal)
