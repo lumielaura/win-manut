@@ -22,10 +22,8 @@ if ($policy -eq "Unrestricted") {
     'scp\programas',
     'scp\winUpdate',
     'scp\status' | 
-    ForEach-Object -Process {
-    
-        Unblock-File "$PSScriptRoot\$_.ps1" -ErrorAction SilentlyContinue;
-    
+    ForEach-Object -Process {    
+        Unblock-File "$PSScriptRoot\$_.ps1" -ErrorAction SilentlyContinue;    
     }
     Set-ExecutionPolicy RemoteSigned CurrentUser;
 }

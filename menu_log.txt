@@ -1,0 +1,49 @@
+=== Início do log do menu ===
+2025-07-29 16:25:09 - Usuário escolheu: Opção 4: Instalar Automaticamente os Programas
+2025-07-29 16:25:14 - Usuário escolheu: Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)
+2025-07-29 16:25:57 - Usuário escolheu: Opção 9: Mostrar o Status Atual do Computador
+2025-07-29 16:26:10 - Usuário escolheu: Opção 4: Instalar Automaticamente os Programas
+2025-07-29 16:26:14 - Usuário escolheu: Opção 7: Instalar Programas Adicionais (manual)
+2025-07-29 16:26:16 - Usuário escolheu: Opção 8: Ativar a Conta de Administrador Local
+2025-07-29 16:26:20 - Usuário escolheu: Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)
+2025-07-29 16:26:26 - Usuário escolheu: Opção 12: Adicionar conexão da rede (Wi-Fi)
+2025-07-29 16:27:24 - Usuário escolheu: Opção 8: Ativar a Conta de Administrador Local
+2025-07-29 16:27:28 - Usuário escolheu: Opção 8: Ativar a Conta de Administrador Local
+2025-07-29 16:27:32 - Usuário escolheu: Opção 9: Mostrar o Status Atual do Computador
+2025-07-29 16:27:42 - Usuário escolheu: Opção 9: Mostrar o Status Atual do Computador
+2025-07-29 16:27:45 - Usuário escolheu: Opção 9: Mostrar o Status Atual do Computador
+2025-07-29 16:27:48 - Usuário escolheu: Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)
+2025-07-29 16:27:50 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 16:28:46 - Usuário escolheu: Sair sem selecionar
+2025-07-29 16:29:05 - Usuário escolheu: Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)
+2025-07-29 16:29:13 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 16:29:41 - Usuário escolheu: Sair sem selecionar
+2025-07-29 16:31:53 - Usuário escolheu: Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)
+2025-07-29 16:31:58 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 16:32:04 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:06:38 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:06:43 - Usuário escolheu: Opção 5: Modificar as Configurações de Rede (Wi-Fi - IP Estático)
+2025-07-29 17:06:48 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:08:29 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:08:31 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:08:33 - Usuário escolheu: Opção 3: Atualizar o Windows
+2025-07-29 17:08:39 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:10:15 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:10:17 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:10:20 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:12:27 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:12:29 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:12:33 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:13:23 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:14:44 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:14:46 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:14:49 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:16:07 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:16:08 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:16:09 - Usuário escolheu: Opção 3: Atualizar o Windows
+2025-07-29 17:16:13 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:16:54 - Usuário escolheu: Opção 1: Todas as Opções Abaixo (2-9)
+2025-07-29 17:16:55 - Usuário escolheu: Opção 2: Modificar e Iniciar os Serviços do Windows
+2025-07-29 17:16:57 - Usuário escolheu: Opção 3: Atualizar o Windows
+2025-07-29 17:17:01 - Usuário escolheu: Sair sem selecionar
+2025-07-29 17:17:29 - Usuário escolheu: Sair sem selecionar
