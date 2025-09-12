@@ -26,7 +26,7 @@ $opcoes = @(
     "Opção 14: Criar nova senha para o ADM",
     "Sair sem selecionar"
 )
-$mbar = '=' * 70;
+
 
 function escreverLog {
     param ($mensagem)
@@ -58,9 +58,9 @@ function mostrarFrase {
         }
     }
 
-    Write-Host "$mbar";
-    Write-Host "$mensagem";
-    Write-Host "$mbar`n";
+    Write-Host ('=' * 70)
+    Write-Host "$mensagem"
+    Write-Host ('=' * 70)`n
 
     escreverLog "Usuário escolheu: $mensagem"
 
@@ -80,12 +80,11 @@ function desenharMenu {
     }
 }
 
+
 # Real corpo do código
 do {
     $index = 0
     $maxIndex = $opcoes.Length - 1
-    $sair = $false
-    $sairComEsc = $false
 
     do {
         desenharMenu $index $opcoes
@@ -94,7 +93,11 @@ do {
         switch ($key.VirtualKeyCode) {
             38 { if ($index -gt 0) { $index-- } }   # Seta ↑
             40 { if ($index -lt $maxIndex) { $index++ } } # Seta ↓
-            27 { $sairComEsc = $true; break } # Esc
+            27 { # Esc
+                escreverLog "Usuário saiu com tecla ESC"
+                Clear-Host
+                return 
+            } 
         }
 
         if ($key.VirtualKeyCode -eq 13 -or $key.Character -eq "`r") {
@@ -103,28 +106,27 @@ do {
 
     } while ($true)
 
-    if ($sairComEsc) {
-        escreverLog "Usuário saiu com tecla ESC"
-        break
-    }
         
     $continuar = mostrarFrase $index
-    
+
     " Index = $index"
     
+    # O index vai ser um numero menor que as opções do menu
     switch ($index) {
-        9 {  
-            & "$PSScriptRoot\scp\status.ps1";
-        }
-        14 {
-            $sair = $true
-        }
-    }
-
-    if ($sair) {
-        Clear-Host
-        Write-Host "Saindo do menu. Até a próxima!"
-        return
+        0 {"Switch 0"}
+        1 {"Switch 1"}
+        2 {}
+        3 {}
+        4 {}
+        5 {}
+        6 {}
+        7 {}
+        8 {& "$PSScriptRoot\scp\status.ps1"}
+        9 {}
+        10 {}
+        11 {}
+        12 {}
+        13 {}
     }
 
     Write-Host "`nPressione qualquer tecla para voltar ao menu..."
