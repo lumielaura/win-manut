@@ -6,240 +6,197 @@
 .EXAMPLE
 	PS> ./Menu.ps1
 .LINK
-	https://github.com/
+	https://github.com/lumielaura/win-manut
 .NOTES
-	Autor: Anderson Costa
+	Autor: Lumiel Aura
 #>
 
-# Desbloqueando script
-$policy = Get-ExecutionPolicy CurrentUser;
-if ($policy -eq "Unrestricted") {
-    'servicos',
-    'Menu',
-    'scp\coleta',
-    'scp\profLocal',
-    'scp\partDisk',
-    'scp\programas',
-    'scp\winUpdate',
-    'scp\status' | 
-    ForEach-Object -Process {    
-        Unblock-File "$PSScriptRoot\$_.ps1" -ErrorAction SilentlyContinue;    
-    }
-    Set-ExecutionPolicy RemoteSigned CurrentUser;
+# Caminho do log (Área de Trabalho do usuário)
+$logPath = "$PSScriptRoot\menu_log.txt"
+
+# Verifica se o log existe; se não, cria com cabeçalho
+if (-not (Test-Path $logPath)) {
+    "=== Início do log do menu ===`n" | Out-File -FilePath $logPath -Append -Encoding utf8
 }
 
-# Variaveis
-$mbar = '=' * 90;
-# $mbar = '='*[console]::WindowWidth;
-# [console]::BackgroundColor = "red";
-$empresa = 'Manutenção de Computadores';
-$coleta = 'Coleta Basica de Informacoes';
-$escolha = 'Voce Escolheu a Opcao';
-$cadeira = 'Todas as Opcoes Abaixo';
-$mip1 = 'Modificar as Configuracoes de Rede (Wi-Fi - IP Estatico)';
-$mip2 = 'Modificar as Configuracoes de Rede (Wi-Fi - DHCP)';
-$mpr1 = 'Instalar Automaticamente os Programas';
-$mse1 = 'Modificar e Iniciar os Serviços do Windows';
-$mcl1 = 'Ativar a Conta de Administrador Local';
-$mpm1 = 'Instalar Programas Restantes (manual)';
-$wup1 = 'Atualizar o Windows';
-$ingre = 'Ingressar o Computador no Dominio';
-$sta1 = 'Mostrar o Status Atual do Computador';
-$part = 'Particionar Disco e Mudar Perfil Padrao Users';
-$addNet = 'Adicionar conexão da rede (Wi-Fi)';
-$irsat = 'Instalar RSAT';
-$cript = 'Criar nova senha para o ADM';
+# Opções do menu
+$opcoes = @(
+    "Opção 1: Todas as Opções Abaixo (2-9)",
+    "Opção 2: Modificar e Iniciar os Serviços do Windows",
+    "Opção 3: Atualizar o Windows",
+    "Opção 4: Instalar Automaticamente os Programas",
+    "Opção 5: Modificar as Configurações de Rede (Wi-Fi - IP Estático)",
+    "Opção 6: Ingressar o Computador no Domínio",
+    "Opção 7: Instalar Programas Adicionais (manual)",
+    "Opção 8: Ativar a Conta de Administrador Local",
+    "Opção 9: Mostrar o Status Atual do Computador",
+    "Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)",
+    "Opção 11: Particionar Disco e Mudar Perfil Padrão do Usuário",
+    "Opção 12: Adicionar conexão da rede (Wi-Fi)",
+    "Opção 13: Instalar RSAT",
+    "Opção 14: Criar nova senha para o ADM",
+    "Sair sem selecionar"
+)
 
-# Função - Centralizar texto
-function Write-HostCenter { 
-    param($Message) Write-Host ("{0}{1}" -f (' ' * (([Math]::Max(0, $Host.UI.RawUI.BufferSize.Width / 2) - [Math]::Floor($Message.Length / 2)))), $Message)
+function escreverLog {
+    param ($mensagem)
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$timestamp - $mensagem" | Out-File -FilePath $logPath -Append -Encoding utf8
 }
 
-# Função - Menu
-function Show-Menu {
-    param ([string]$Title = "Script $empresa")
-    Clear-Host    
-    Write-HostCenter "$mbar";
-    Write-HostCenter "$Title";
-    Write-HostCenter "$mbar";
-    "`n`tNome do Computador: $hlet$hnum
-    `n`tDigite
-    `t1: $cadeira.`n
-    `t2: $mse1.
-    `t3: $wup1.
-    `t4: $mpr1.
-    `t5: $mip1.
-    `t6: $ingre. (Atalho)
-    `t7: $mpm1.
-    `t8: $mcl1.
-    `t9: $sta1.`n";
-    Write-HostCenter "$mbar";
-    Write-HostCenter "Opções Extras";
-    Write-HostCenter "$mbar";
-    "`n`tDigite
-    `t10: $mip2.
-    `t11: $part. (Em Teste)
-    `t12: $addNet. (Em Teste)
-    `t13: $irsat.
-    `t14: $cript.
-    `n`tS: Digite 'S' para sair.`n";
-}
-
-# Função - SubMenu
-function Show-SubMenu {
-
-    param ([string]$subTitle)
-
+function mostrarFrase {
+    param ($index)
     Clear-Host
-    "$escolha`n";
-    Write-HostCenter "$mbar";
-    Write-HostCenter "$subTitle";
-    Write-HostCenter "$mbar`n";
-
-}
-
-do {
-    Show-Menu
-    $opcao = Read-Host "Por favor, digite uma opcao";
-    switch ($opcao) {
-        1 {
-            # Todas as Opcoes Abaixo            
-            Write-Progress -Activity "Progresso do Script: $mse1" -Status "Tarefa 1 de 10" -PercentComplete 10;
-            & "$PSScriptRoot\servicos.ps1";
-            
-            Write-Progress -Activity "Progresso do Script: $coleta" -Status "Tarefa 2 de 10" -PercentComplete 20;
-            & "$PSScriptRoot\scp\coleta.ps1";
-            
-            Write-Progress -Activity "Progresso do Script: Renomear Computador" -Status "Tarefa 3 de 10" -PercentComplete 30;
-            # Renomear computador
-            if ( $hlet -like "???*" -and $hnum -like "?*" ) { #modelo de nome da empresa
-                Rename-Computer -NewName "$hlet$hnum";
-            }
-
-            # Configurar rede
-            Write-Progress -Activity "Progresso do Script: $mip1" -Status "Tarefa 4 de 10" -PercentComplete 40;
-            if ($resIp -eq 'S' -and $hnum -like "?*" ) { #modelo de rede da empresa  
-                # & "$PSScriptRoot\netwk\netwk.ps1";
-                & "$PSScriptRoot\scp\ipConf.ps1"; #IP estatico
-            }
-            
-            Write-Progress -Activity "Progresso do Script: $mcl1" -Status "Tarefa 5 de 10" -PercentComplete 50;
-            & "$PSScriptRoot\scp\profLocal.ps1";
-            
-            # particionar hd
-            Write-Progress -Activity "Progresso do Script: $part" -Status "Tarefa 6 de 10" -PercentComplete 60;
-            if ($hdpart -eq 'S') { 
-                & "$PSScriptRoot\scp\partDisk.ps1";
-            }
-            
-            Write-Progress -Activity "Progresso do Script: $mpr1" -Status "Tarefa 7 de 10" -PercentComplete 70;
-            & "$PSScriptRoot\scp\programas.ps1"; 
-            
-            Write-Progress -Activity "Progresso do Script: $wup1" -Status "Tarefa 8 de 10" -PercentComplete 80;
-            & "$PSScriptRoot\scp\winUpdate.ps1"; 
-            
-            Write-Progress -Activity "Progresso do Script: $mse1" -Status "Tarefa 9 de 10" -PercentComplete 90;
-            & "$PSScriptRoot\servicos.ps1";
-            
-            Write-Progress -Activity "Todas as Tarefas Foram Finalizadas" -Status "Tarefa 10 de 10" -PercentComplete 100;
-            & "$PSScriptRoot\scp\status.ps1";
-            & SystemPropertiesComputerName.exe;
-            Restart-Computer -Confirm;
-        } 
-
-        2 {            
-            # Modificar e Iniciar os Serviços do Windows
-            & "$PSScriptRoot\servicos.ps1";
-        } 
-
-        3 {            
-            # Atualizar o Windows
-            & "$PSScriptRoot\scp\winUpdate.ps1";
-            Restart-Computer -Confirm;
-        } 
-        
-        4 {            
-            # Instalar Automaticamente os Programas da SEAS
-            & "$PSScriptRoot\scp\programas.ps1";
-        } 
-        
-        5 {            
-            Show-SubMenu ($subTitle = "$coleta");
-
-            "`nDigite os NUMEROS do Hostname:`nEx: Digite: 17";
-            $hnum = Read-Host "NUMEROS do Hostname";
-
-            # Modificar as Configuracoes de Rede (Wi-Fi - IP Estatico)
-            if ($hnum -like "?*" ) { 
-                & "$PSScriptRoot\scp\ipConf.ps1"; 
-            } 
-        } 
-        
-        6 {            
-            # Ingressar o Computador no Dominio
-            Show-SubMenu ($subTitle = "$ingre");
-            & SystemPropertiesComputerName;
-        } 
-
-        7 {            
-            # Instalar Programas Restantes (manual)
-            & "$PSScriptRoot\scp\progMan.ps1";
-        } 
-        
-        8 {            
-            # Ativar a Conta de Administrador Local
-            & "$PSScriptRoot\scp\profLocal.ps1";
-        } 
-        
-        9 {            
-            # Mostrar o Status Atual do Computador
-            & "$PSScriptRoot\scp\status.ps1";
-        } 
-        
-        10 {            
-            # Modificar as Configuracoes de Rede (Wi-Fi - DHCP)
-            Show-SubMenu ($subTitle = "$mip2");
-
-            Remove-NetIPAddress -InterfaceAlias Wi-Fi -Confirm:$false;
-            Remove-NetRoute -InterfaceAlias Wi-Fi -Confirm:$false;
-            Set-NetIPInterface -InterfaceAlias Wi-Fi -DHCP enabled;
-        } 
-        
-        11 {            
-            # Particionar Disco e Mudar Perfil Padrao Users
-            & "$PSScriptRoot\scp\partDisk.ps1";
-        }  
-        
-        12 {            
-            # Adicionar conexão da rede SIMS/AP (Wi-Fi)
-            & "$PSScriptRoot\netwk\netwk.ps1";
-        }  
-        
-        13 {            
-            # Instalar RSAT
-            Show-SubMenu ($subTitle = "$irsat");
-
-            # Get-WindowsCapability -Name rsat* -online | Select-Object -Property Name, State;
-            # Get-WindowsCapability -name rsat* -online | Add-WindowsCapability –Online;
-            Get-WindowsCapability -Name "Rsat.ActiveDirectory.*" -online | Add-WindowsCapability –Online;
-        }  
-        
-        14 {            
-            # Nova senha ADM
-            Show-SubMenu ($subTitle = "$cript");
-
-            $caminho = "$PSScriptRoot\scp\101.txt";
-            Read-Host "Nova Senha: " -AsSecureString | ConvertFrom-SecureString | Out-File $caminho
-        } 
-        
-        15 {            
-            # Testes
-        } 
-        
-        's' {            
-            return
+    switch ($index) {
+        0 { $mensagem = "$($opcoes[0])" }
+        1 { $mensagem = "$($opcoes[1])" }
+        2 { $mensagem = "$($opcoes[2])" }
+        3 { $mensagem = "$($opcoes[3])" }
+        4 { $mensagem = "$($opcoes[4])" }
+        5 { $mensagem = "$($opcoes[5])" }
+        6 { $mensagem = "$($opcoes[6])" }
+        7 { $mensagem = "$($opcoes[7])" }
+        8 { $mensagem = "$($opcoes[8])" }
+        9 { $mensagem = "$($opcoes[9])" }
+        10 { $mensagem = "$($opcoes[10])" }
+        11 { $mensagem = "$($opcoes[11])" }
+        12 { $mensagem = "$($opcoes[12])" }
+        13 { $mensagem = "$($opcoes[13])" }
+        14 { 
+            escreverLog "Usuário escolheu: Sair sem selecionar"
+            return $false 
         }
     }
-    pause
+
+    Write-Host ('=' * 60)
+    Write-Host "$mensagem"
+    Write-Host ('=' * 60)`n
+
+    escreverLog "Usuário escolheu: $mensagem"
+    return $true
 }
-until ($opcao -eq 's')
+
+function desenharMenu {
+    param ($index, $opcoes)
+    Clear-Host
+    Write-Host "Use as setas ↑ ↓ para navegar. ENTER para selecionar. ESC para sair.`n"
+    for ($i = 0; $i -lt $opcoes.Length; $i++) {
+        if ($i -eq $index) {
+            Write-Host "> $($opcoes[$i])" -ForegroundColor Cyan
+        } else {
+            Write-Host "  $($opcoes[$i])"
+        }
+    }
+}
+
+
+# Real corpo do código
+do {
+    $index = 0
+    $maxIndex = $opcoes.Length - 1
+
+    # Menu interativo, podendo usar as setas do teclado
+    do {
+        desenharMenu $index $opcoes
+        $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+        switch ($key.VirtualKeyCode) {
+            38 { if ($index -gt 0) { $index-- } }   # Seta ↑
+            40 { if ($index -lt $maxIndex) { $index++ } } # Seta ↓
+            27 { # Esc
+                escreverLog "Usuário saiu com tecla ESC"
+                Clear-Host
+                return 
+            } 
+        }
+
+        # Selecionar opção / Enter
+        if ($key.VirtualKeyCode -eq 13 -or $key.Character -eq "`r") {
+            break
+        }
+
+    } while ($true)
+
+    $continuar = mostrarFrase $index
+    
+    # O index vai ser 1 numero menor que as opções do menu
+    switch ($index) {
+        0 {
+            "Index = $index"
+            # "Opção 1: Todas as Opções Abaixo (2-9)"
+            "Área de Teste"
+        }
+        1 {
+            # "Opção 2: Modificar e Iniciar os Serviços do Windows"
+            & "$PSScriptRoot\scp\servicos.ps1"
+        }
+        2 {
+            # "Opção 3: Atualizar o Windows"
+            Set-PSRepository -Name PSGallery -InstallationPolicy Trusted;
+            Install-Module PSWindowsUpdate -PassThru;
+            Get-WindowsUpdate -AcceptAll -Install;
+            Restart-Computer -Confirm
+        }
+        3 {
+            # "Opção 4: Instalar Automaticamente os Programas"
+            & "$PSScriptRoot\scp\programas.ps1"
+        }
+        4 {
+            # "Opção 5: Modificar as Configurações de Rede (Wi-Fi - IP Estático)"
+            "`nDigite os NUMEROS do Hostname:`nEx: Digite: 17"
+            $hnum = Read-Host "NUMEROS do Hostname"
+
+            if ($hnum -like "?*" ) { 
+                & "$PSScriptRoot\scp\ipConf.ps1"
+            } 
+        }
+        5 {
+            # "Opção 6: Ingressar o Computador no Domínio"
+            & SystemPropertiesComputerName
+        }
+        6 {
+            # "Opção 7: Instalar Programas Adicionais (manual)"
+            "Descontinuado - Segunda Área de Teste"
+        }
+        7 {
+            # "Opção 8: Ativar a Conta de Administrador Local"
+            & "$PSScriptRoot\scp\profLocal.ps1"
+        }
+        8 {
+            # "Opção 9: Mostrar o Status Atual do Computador"
+            & "$PSScriptRoot\scp\status.ps1"
+        }
+        9 {
+            # "Opção 10: Modificar as Configurações de Rede (Wi-Fi - DHCP)"
+            Remove-NetIPAddress -InterfaceAlias Wi-Fi -Confirm:$false
+            Remove-NetRoute -InterfaceAlias Wi-Fi -Confirm:$false
+            Set-NetIPInterface -InterfaceAlias Wi-Fi -DHCP enabled
+        }
+        10 {
+            # "Opção 11: Particionar Disco e Mudar Perfil Padrão do Usuário"
+            & "$PSScriptRoot\scp\partDisk.ps1"
+        }
+        11 {
+            # "Opção 12: Adicionar conexão da rede (Wi-Fi)"
+            & "$PSScriptRoot\netwk\netwk.ps1"
+        }
+        12 {
+            # "Opção 13: Instalar RSAT"
+            Get-WindowsCapability -Name "Rsat.ActiveDirectory.*" -online | Add-WindowsCapability –Online
+        }
+        13 {
+            # "Opção 14: Criar nova senha para o ADM"
+            $caminho = "$PSScriptRoot\scp\101.txt"
+            Read-Host "Nova Senha: " -AsSecureString | ConvertFrom-SecureString | Out-File $caminho
+        }
+    }
+
+    if ($index -eq 0..12) {
+        "Index: $Index"
+    }
+    
+    Write-Host "`nPressione qualquer tecla para voltar ao menu..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    
+
+} while ($continuar)

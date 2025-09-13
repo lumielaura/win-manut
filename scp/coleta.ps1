@@ -1,5 +1,4 @@
 # Coleta de informações
-Show-SubMenu ($subTitle = "$coleta");
 
 $hlet2 = Read-Host "`nDigite as LETRAS do Hostname:`nEx: Digite: GTI`nLETRAS do Hostname";
 $hlet = $hlet2.toUpper();

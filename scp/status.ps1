@@ -1,5 +1,3 @@
-Show-SubMenu
-# Show-SubMenu ($subTitle = "$sta1");
 
 # mandar o valor para variável
 # $Today = (Get-Date).DayOfWeek

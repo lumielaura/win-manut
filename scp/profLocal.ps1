@@ -1,5 +1,3 @@
-Show-SubMenu ($subTitle = "$mcl1");
-
 # Coletando Passwd Manualmente
 # $lpass = Read-Host -AsSecureString "Digite a senha de Administrador Local";
 # $passwd = ConvertTo-SecureString –AsPlainText -Force -String $lpass

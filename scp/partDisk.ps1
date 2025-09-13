@@ -1,5 +1,3 @@
-Show-SubMenu ($subTitle = "$part");
-
 # variaveis
 $divs = 1000000000; # 1 Milhão
 $pathD = "D:\";

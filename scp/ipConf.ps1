@@ -1,5 +1,3 @@
-Show-SubMenu ($subTitle = "$mip1");
-
 # Variáveis
 $rede = '10.156.9.';
 $rprod1 = '192.168.250.7';
