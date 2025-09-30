@@ -13,10 +13,10 @@ Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -Property Name,P
 
 # SERVIÇOS
 # ver se os serviços foram modificados 
-Get-Service -Name 'Fax','SysMain','diagnosticshub.standardcollector.service','WMPNetworkSvc','SuperFetch','wscsvc','WSearch','TermService','WerSvc','BDESVC','WbioSrvc','SessionEnv','WpcMonSvc','SCardSvr' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
-Get-Service -Name 'DiagTrack','MapsBroker','lmhosts','iphlpsvc','DPS','SDRSVC','stisvc' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
-Get-Service -Name 'RpcLocator','Spooler','wuauserv','msiserver' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
-"`n";
+# Get-Service -Name 'Fax','SysMain','diagnosticshub.standardcollector.service','WMPNetworkSvc','SuperFetch','wscsvc','WSearch','TermService','WerSvc','BDESVC','WbioSrvc','SessionEnv','WpcMonSvc','SCardSvr' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
+# Get-Service -Name 'DiagTrack','MapsBroker','lmhosts','iphlpsvc','DPS','SDRSVC','stisvc' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
+# Get-Service -Name 'RpcLocator','Spooler','wuauserv','msiserver' -ErrorAction SilentlyContinue | Select-Object -Property StartType,Status,DisplayName | Format-Table;
+# "`n";
 
 # DISCOS
 # ver todos os discos que tenham nome

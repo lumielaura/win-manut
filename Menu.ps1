@@ -62,10 +62,7 @@ function mostrarFrase {
         11 { $mensagem = "$($opcoes[11])" }
         12 { $mensagem = "$($opcoes[12])" }
         13 { $mensagem = "$($opcoes[13])" }
-        14 { 
-            escreverLog "Usuário escolheu: Sair sem selecionar"
-            return $false 
-        }
+        14 { return $false }
     }
 
     Write-Host ('=' * 60)
@@ -189,9 +186,14 @@ do {
             $caminho = "$PSScriptRoot\scp\101.txt"
             Read-Host "Nova Senha: " -AsSecureString | ConvertFrom-SecureString | Out-File $caminho
         }
+        14 {
+            escreverLog "Usuário escolheu: Sair sem selecionar"
+            Clear-Host
+            return
+        }
     }
 
-    if ($index -eq 0..12) {
+    if ($index -eq 0..13) {
         "Index: $Index"
     }
     
