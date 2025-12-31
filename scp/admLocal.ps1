@@ -1,9 +1,9 @@
 # Coletando Passwd Manualmente
 # $lpass = Read-Host -AsSecureString "Digite a senha de Administrador Local";
-# $passwd = ConvertTo-SecureString –AsPlainText -Force -String $lpass
+# $passwd = ConvertTo-SecureString -AsPlainText -Force -String $lpass
 
 # Coletando Passwd Automáticamente
-# $passwd = ConvertTo-SecureString –AsPlainText -Force -String 'Senha123exemplo'
+# $passwd = ConvertTo-SecureString -AsPlainText -Force -String 'Senha123exemplo'
 # $passwd = System.Security.SecureString
 # $Encrypted = ConvertFrom-SecureString -SecureString $passwd
 $encriptado = "$PSScriptRoot\scp\101.txt";
@@ -14,7 +14,7 @@ Set-LocalUser -Name 'administrador' -Password $passwd
 
 Get-LocalUser | Where-Object { $_.Enabled -eq "True" } | Format-Table;
 
-# Desabilitando usuario local e deixando apenas o ADM e login pelo domínio habilitado.
+# Desabilitando usuario local e deixando apenas o ADM e login pelo dominio habilitado.
 if ($locDRes -eq "S" -and $hlet -like "???*") {
 
     Disable-LocalUser -Name $hlet;

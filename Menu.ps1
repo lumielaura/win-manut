@@ -95,6 +95,7 @@ do {
     # Menu interativo, podendo usar as setas do teclado
     do {
         desenharMenu $index $opcoes
+        # Este comando espera pela entrada do usuario, essa entrada sera gravada na variavel key
         $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
         switch ($key.VirtualKeyCode) {
@@ -132,6 +133,8 @@ do {
             Set-PSRepository -Name PSGallery -InstallationPolicy Trusted;
             Install-Module PSWindowsUpdate -PassThru;
             Get-WindowsUpdate -AcceptAll -Install;
+            Write-Output "Todas as atualizacoes foram instaladas`nO computador vai reiniciar em  10 segundos."
+            Start-Sleep -Seconds 10
             Restart-Computer -Confirm
         }
         3 {
@@ -152,12 +155,14 @@ do {
             & SystemPropertiesComputerName
         }
         6 {
-            # "Opção 7: Instalar Programas Adicionais (manual)"
-            "Descontinuado - Segunda Área de Teste"
+            # "Opcao 7: Instalar Programas Adicionais (manual)"
+            "Descontinuado - Area de Teste"
+            # Posso fazer com que a pasta com os arquivos seja aberta para comecar uma instalacao manual
+            & explorer.exe "$PSScriptRoot"
         }
         7 {
-            # "Opção 8: Ativar a Conta de Administrador Local"
-            & "$PSScriptRoot\scp\profLocal.ps1"
+            # "Opcao 8: Ativar a Conta de Administrador Local"
+            & "$PSScriptRoot\scp\admLocal.ps1"
         }
         8 {
             # "Opção 9: Mostrar o Status Atual do Computador"
