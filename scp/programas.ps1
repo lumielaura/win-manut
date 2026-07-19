@@ -37,28 +37,11 @@ $ind=0 # Programas do meu computador
 'CodecGuide.K-LiteCodecPack.Basic',
 'Microsoft.VCLibs.Desktop.14' |
 ForEach-Object -Process {    
-    $ind++;"`nID: $ind`tName: $_"
+    $ind++
+    "`nID: $ind`tName: $_"
     winget install --id="$_" -e
 }
 
-
-# Outras opções de pacotes 
-# 'EclipseAdoptium.Temurin.17.JRE',
-# 'ArtifexSoftware.GhostScript',
-# 'Cyanfish.NAPS2',
-# 'ChristianKindahl.InfraRecorder',
-# 'LIGHTNINGUK.ImgBurn',
-# 'TeamViewer.TeamViewer',
-# 'Google.Chrome',
-# 'Microsoft.Edge',
-# 'BleachBit.BleachBit', 
-# 'GlavSoft.TightVNC',
-# 'PuTTY.PuTTY',
-# 'AcroSoftware.CutePDFWriter',
-# 'dotPDNLLC.paintdotnet',
-# 'Zoom.Zoom',
-# 'Google.EarthPro',
-# 'JackieLiu.NotepadsApp', Problemas com w11
 
 # exportar uma lista de app com winget
 # winget export -o "$HOME\Documents\wingetprograms.txt"
